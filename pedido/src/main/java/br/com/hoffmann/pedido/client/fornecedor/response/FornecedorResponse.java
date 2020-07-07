@@ -1,6 +1,5 @@
-package br.com.hoffmann.pedido.client.pessoa.response;
+package br.com.hoffmann.pedido.client.fornecedor.response;
 
-import br.com.hoffmann.pedido.client.pessoa.enums.TipoDeUsuario;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,22 +10,19 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class FindPessoaResponse implements Serializable {
+public class FornecedorResponse implements Serializable {
 
-    @ApiModelProperty(value = "Id")
+    @ApiModelProperty(value = "Fabricante id")
     private Long id;
 
     @ApiModelProperty(value = "Nome")
     private String nome;
 
-    @ApiModelProperty(value = "CPF")
-    private String cpf;
+    @ApiModelProperty(value = "Descricao")
+    private String descricao;
 
-    @ApiModelProperty(value = "Tipo de usuario")
-    private TipoDeUsuario tipoDeUsuario;
-
-    @ApiModelProperty(value = "Status")
-    private Character status;
+    @ApiModelProperty(value = "Cnpj")
+    private String cnpj;
 
     @ApiModelProperty(value = "Estado")
     private String estado;
@@ -41,7 +37,7 @@ public class FindPessoaResponse implements Serializable {
     private String rua;
 
     @ApiModelProperty(value = "Numero")
-    private Short numero;
+    private int numero;
 
     @ApiModelProperty(value = "Bairro")
     private String bairro;
@@ -60,4 +56,5 @@ public class FindPessoaResponse implements Serializable {
 
     @ApiModelProperty(value = "Email")
     private String email;
+
 }

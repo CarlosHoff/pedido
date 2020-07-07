@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class FindProdutoResponse implements Serializable {
+public class ProdutoResponse implements Serializable {
 
     @ApiModelProperty(value = "Produto id")
     private Long id;

@@ -1,5 +1,6 @@
-package br.com.hoffmann.pedido.client.fabricante.response;
+package br.com.hoffmann.pedido.client.usuario.response;
 
+import br.com.hoffmann.pedido.client.usuario.enums.TipoDeUsuario;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,19 +11,22 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class FindFabricanteResponse implements Serializable {
+public class UsuarioResponse implements Serializable {
 
-    @ApiModelProperty(value = "Fabricante id")
+    @ApiModelProperty(value = "Id")
     private Long id;
 
     @ApiModelProperty(value = "Nome")
     private String nome;
 
-    @ApiModelProperty(value = "Descricao")
-    private String descricao;
+    @ApiModelProperty(value = "CPF")
+    private String cpf;
 
-    @ApiModelProperty(value = "Cnpj")
-    private String cnpj;
+    @ApiModelProperty(value = "Tipo de usuario")
+    private TipoDeUsuario tipoDeUsuario;
+
+    @ApiModelProperty(value = "Status")
+    private Character status;
 
     @ApiModelProperty(value = "Estado")
     private String estado;
@@ -37,7 +41,7 @@ public class FindFabricanteResponse implements Serializable {
     private String rua;
 
     @ApiModelProperty(value = "Numero")
-    private int numero;
+    private Short numero;
 
     @ApiModelProperty(value = "Bairro")
     private String bairro;
@@ -56,5 +60,4 @@ public class FindFabricanteResponse implements Serializable {
 
     @ApiModelProperty(value = "Email")
     private String email;
-
 }

@@ -1,4 +1,4 @@
-package br.com.hoffmann.pedido.client.pessoa.enums;
+package br.com.hoffmann.pedido.domain.enums;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,21 +7,21 @@ import static java.util.Arrays.stream;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 
-public enum TipoDeUsuario {
+public enum FormaPagamento {
 
-    ADMIN(1, "Admin"),
-    USUARIO(2, "User");
+    CREDITO(1, "Credito"),
+    DEBITO(2, "Debito");
 
-    private static final Map<Integer, TipoDeUsuario> TIPO_DE_USUARIO_MAP = new HashMap<>(values().length);
+    private static final Map<Integer, FormaPagamento> FORMA_PAGAMENTO = new HashMap<>(values().length);
 
     static {
-        TIPO_DE_USUARIO_MAP.putAll(stream(values()).collect(toMap(TipoDeUsuario::code, identity())));
+        FORMA_PAGAMENTO.putAll(stream(values()).collect(toMap(FormaPagamento::code, identity())));
     }
 
     private final Integer code;
     private final String description;
 
-    TipoDeUsuario(Integer code, String description) {
+    FormaPagamento(Integer code, String description) {
         this.code = code;
         this.description = description;
     }
@@ -38,14 +38,13 @@ public enum TipoDeUsuario {
         return this.description;
     }
 
-    public static TipoDeUsuario of(Long enumCode) {
+    public static FormaPagamento of(Long enumCode) {
 
-        if (enumCode.equals(ADMIN.getCode())) {
-            return ADMIN;
-        } else if (enumCode.equals(USUARIO.getCode())) {
-            return USUARIO;
+        if (enumCode.equals(CREDITO.getCode())) {
+            return CREDITO;
+        } else if (enumCode.equals(DEBITO.getCode())) {
+            return DEBITO;
         } else
             return null;
     }
-
 }
