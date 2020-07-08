@@ -26,6 +26,7 @@ public class Pedido {
     @Column(name = "CLIENTE", nullable = false)
     private Long cliente;
 
+
     @Column(name = "DATA_PEDIDO", nullable = false)
     private LocalDate dataPedido;
 
@@ -44,4 +45,67 @@ public class Pedido {
     @Column(name = "FORMA_PAGAMENTO", nullable = false)
     private FormaPagamento formaPagamento;
 
+    public Long getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(Long pedidoId) {
+        this.pedidoId = pedidoId;
+    }
+
+    public Long getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Long cliente) {
+        this.cliente = cliente;
+    }
+
+    public LocalDate getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(LocalDate dataPedido) {
+        this.dataPedido = dataPedido;
+    }
+
+    public Double getValorUnitarioProduto() {
+        return valorUnitarioProduto;
+    }
+
+    public void setValorUnitarioProduto(Double valorUnitarioProduto) {
+        this.valorUnitarioProduto = valorUnitarioProduto;
+    }
+
+    public Double getValorTotalPorProduto() {
+        return valorTotalPorProduto;
+    }
+
+    public void setValorTotalPorProduto(Double valorTotalPorProduto) {
+        this.valorTotalPorProduto = valorTotalPorProduto;
+    }
+
+    public Double getValorTotalNota() {
+        return valorTotalNota;
+    }
+
+    public void setValorTotalNota(Double valorTotalNota) {
+        this.valorTotalNota = valorTotalNota;
+    }
+
+    public Long getQtdeTotalNotal() {
+        return qtdeTotalNotal;
+    }
+
+    public void setQtdeTotalNotal(Long qtdeTotalNotal) {
+        this.qtdeTotalNotal = qtdeTotalNotal;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
 }

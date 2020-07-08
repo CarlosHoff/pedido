@@ -8,12 +8,18 @@ import br.com.hoffmann.pedido.domain.request.PedidoRequest;
 import br.com.hoffmann.pedido.domain.response.PedidoResponse;
 import br.com.hoffmann.pedido.entity.EnderecoEntrega;
 import br.com.hoffmann.pedido.entity.Pedido;
+import br.com.hoffmann.pedido.entity.Produto;
 import br.com.hoffmann.pedido.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(value = "transactionManager")
@@ -36,21 +42,28 @@ public class PedidoService {
     public PedidoResponse createPedido(PedidoRequest request) {
 
         Pedido pedido = new Pedido();
-
         pedido.setCliente(request.getCliente());
         pedido.setDataPedido(LocalDate.now());
-//        pedido.setValorUnitarioProduto();
-//        pedido.setValorTotalPorProduto();
-//        pedido.setValorTotalNota();
-//        pedido.setQtdeTotalNotal();
-//
-
-
+        pedido.setValorTotalNota(10.00);
         pedido.setFormaPagamento(FormaPagamento.of(request.getFormaPagamento().getCode()));
 
-        Pedido pedidoSalvo = pedidoRepository.save(pedido);
+        Pedido pedidoSave = pedidoRepository.save(pedido);
+
+        List<Produto> list = new ArrayList<>();
+
+        list = request.getProdutoList().stream()
+                .map(Produto::new).collect(Collectors.toList()).stream()
+                .map(p -> {
+                    p.setPedido(pedidoSave);
+                    return p;
+                }).collect(Collectors.toList());
+
+        //list.stream().forEach(p -> p.setPedido(pedidoSave));
+
+        //produtoClient.criarProduto(list);
+
         PedidoResponse response = new PedidoResponse();
-        response.setPedidoId(pedidoSalvo.getPedidoId());
+        response.setPedidoId(pedidoSave.getPedidoId());
         response.setMensagem(PEDIDO_OK);
         return response;
     }

@@ -17,4 +17,20 @@ public class PedidoResponse implements Serializable {
 
     @ApiModelProperty(value = "Mensagem de retorno")
     private String mensagem;
+
+    public Long getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(Long pedidoId) {
+        this.pedidoId = pedidoId;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
 }

@@ -1,5 +1,6 @@
 package br.com.hoffmann.pedido.entity;
 
+import br.com.hoffmann.pedido.domain.dto.ProdutoDto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +25,7 @@ public class Produto {
     @Column(name = "PRODUTO_ID")
     private Long produtoId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="PEDIDO_ID")
     private Pedido pedido;
 
@@ -40,4 +41,60 @@ public class Produto {
     @Column(name = "PREVISAO_ENTREGA", nullable = false)
     private LocalDate previsaoEntrega;
 
+    public Produto(){}
+
+    public  Produto(ProdutoDto p){
+        previsaoEntrega = p.getPrevisaoEntrega();
+        quantidade = p.getQtdeProduto();
+        valorUnitario = p.getValorUnitario();
+        valorTotalCadaProduto = p.getValorTotalCadaProduto();
+    }
+
+    public Long getProdutoId() {
+        return produtoId;
+    }
+
+    public void setProdutoId(Long produtoId) {
+        this.produtoId = produtoId;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Long getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Long quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Double getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(Double valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public Double getValorTotalCadaProduto() {
+        return valorTotalCadaProduto;
+    }
+
+    public void setValorTotalCadaProduto(Double valorTotalCadaProduto) {
+        this.valorTotalCadaProduto = valorTotalCadaProduto;
+    }
+
+    public LocalDate getPrevisaoEntrega() {
+        return previsaoEntrega;
+    }
+
+    public void setPrevisaoEntrega(LocalDate previsaoEntrega) {
+        this.previsaoEntrega = previsaoEntrega;
+    }
 }
